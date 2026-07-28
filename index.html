@@ -1,354 +1,122 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>拖延症心理剧</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #faf9f6;
-      font-family: system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', 'Noto Sans', sans-serif;
-      line-height: 1.7;
-      color: #1e1e2a;
-      padding: 2rem 1rem;
-    }
-
-    .paper {
-      max-width: 880px;
-      margin: 0 auto;
-      background: #ffffffdd;
-      backdrop-filter: blur(2px);
-      background: #fffcf8;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
-      border-radius: 32px;
-      padding: 2.5rem 2rem;
-      border: 1px solid #f0e7de;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      font-weight: 650;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-      color: #1f2e3a;
-      border-left: 8px solid #f6ae2d;
-      padding-left: 1.5rem;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      color: #2c3e4e;
-      border-bottom: 3px dashed #ecd9c6;
-      padding-bottom: 0.5rem;
-    }
-
-    h3 {
-      font-weight: 600;
-      font-size: 1.3rem;
-      margin-top: 1.8rem;
-      margin-bottom: 0.75rem;
-      color: #3a4e5e;
-    }
-
-    p {
-      margin-bottom: 1.25rem;
-      font-size: 1.06rem;
-    }
-
-    .lead {
-      font-size: 1.2rem;
-      font-weight: 430;
-      background: #f3efe9;
-      padding: 1.2rem 1.8rem;
-      border-radius: 28px;
-      margin: 1.5rem 0 2rem 0;
-      color: #1e2b36;
-    }
-
-    ul, ol {
-      margin: 0.8rem 0 1.5rem 1.8rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    li strong {
-      color: #bc6c25;
-    }
-
-    .card-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-
-    .insight-card {
-      background: #fefbf8;
-      border-radius: 24px;
-      padding: 1.6rem 2rem;
-      border: 1px solid #e7dbd0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      transition: all 0.15s;
-    }
-
-    .insight-card:hover {
-      border-color: #f6ae2d80;
-      box-shadow: 0 8px 18px rgba(246, 174, 45, 0.06);
-    }
-
-    .insight-card h3 {
-      margin-top: 0.2rem;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .img-wrapper {
-      margin: 1.4rem 0 0.6rem;
-      text-align: center;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #f3ede7;
-      padding: 0.8rem;
-    }
-
-    .img-wrapper img {
-      max-width: 100%;
-      max-height: 240px;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
-    }
-
-    .img-wrapper img:hover {
-      transform: scale(1.01);
-    }
-
-    .quote {
-      font-style: italic;
-      padding: 0.8rem 1.6rem;
-      background: #eae3db40;
-      border-radius: 18px;
-      color: #2e404e;
-      border-left: 5px solid #bc6c25;
-      margin: 1.6rem 0;
-    }
-
-    .method-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.8rem 1.5rem;
-      list-style: none;
-      margin-left: 0;
-    }
-
-    .method-list li {
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="%23f6ae2d" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;
-      padding-left: 2rem;
-      background-size: 1.2rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .video-placeholder {
-      background: #e8ddd2;
-      border-radius: 28px;
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      margin: 2.5rem 0 1rem;
-      border: 2px dashed #c4aa97;
-      color: #3f4e5c;
-      font-weight: 500;
-      transition: background 0.2s;
-    }
-
-    .video-placeholder:hover {
-      background: #dfd2c6;
-    }
-
-    .video-icon {
-      font-size: 3.8rem;
-      margin-bottom: 0.5rem;
-      opacity: 0.7;
-    }
-
-    .footnote {
-      margin-top: 2.8rem;
-      text-align: right;
-      font-size: 0.9rem;
-      color: #7b6e63;
-      border-top: 1px solid #e3d6cb;
-      padding-top: 1.8rem;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #f6ae2d20;
-      color: #935e1f;
-      font-weight: 500;
-      padding: 0.2rem 1rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      margin-right: 0.6rem;
-      border: 1px solid #f6ae2d40;
-    }
-
-    .emoji-bullet {
-      margin-right: 8px;
-    }
-
-    /* 移动端适配 */
-    @media (max-width: 600px) {
-      .paper {
-        padding: 1.8rem 1.2rem;
-      }
-      h1 {
-        font-size: 2rem;
-        padding-left: 1rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-      .insight-card {
-        padding: 1.2rem 1.4rem;
-      }
-    }
-
-    /* 罕见词提示样式（低调优雅） */
-    .rare-word {
-      font-weight: 480;
-      color: #6e4b2e;
-      border-bottom: 1px dotted #b98f6e;
-      cursor: help;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <!-- 移动端视口必须保留，禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>猜数字游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            /* 移动端弹性布局，全部内容居中 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+            gap: 24px; /* 元素间距 */
+            font-family: system-ui, sans-serif;
+        }
+        h1 {
+            font-size: 22px;
+            text-align: center;
+        }
+        #guess {
+            width: min(280px, 90vw);
+            height: 70px;
+            font-size: 22px;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        .btn-wrap {
+            display: flex;
+            gap: 16px;
+        }
+        button {
+            width: 110px;
+            height: 70px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+        button#reset {
+            background-color: #6b7280;
+        }
+        button:disabled {
+            background-color: #bbbbbb;
+            cursor: not-allowed;
+        }
+        #count {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<div class="paper">
-  <h1>🐢 第三组心理剧 · 拖延症</h1>
-  <div class="lead">
-    “再等一会儿” —— 拖延不是懒惰，是情绪在呼救。<br>
-    当完美主义撞上时间折扣，飞轮的第一圈最费力。现在，开始转动。
-  </div>
-
-  <!-- 剧本简介 -->
-  <h2>📜 剧本简介</h2>
-  <p><span class="tag">小明同学</span> <span class="tag">逃避作业</span> <span class="tag">最终觉醒</span></p>
-  <p>小明同学不想完成作业，喜欢把大把时间投入到娱乐中，所以在写作业的过程中出现了很多拖延的行为。作业等到最后一天写，游戏一直在玩，输了要一雪前耻，赢了要乘胜追击；写作业没头绪就开始做其他的事情，完全没有投入其中；在经历了惨重的教训后，他终于决定改变对必须要完成的事情的态度，不再拖沓。</p>
-
-  <!-- 剧本分析 + 核心发现 -->
-  <h2>🔍 剧本分析 · 核心发现</h2>
-  <p>剧本触及了拖延症研究的几个核心发现，将抽象的心理学机制转化为宿舍日常的精确隐喻。</p>
-
-  <div class="card-grid">
-    <!-- 1. 拖延 ≠ 懒惰 -->
-    <div class="insight-card">
-      <h3>① 拖延 ≠ 懒惰</h3>
-      <p>这是最关键的认知纠偏。心理学研究表明，拖延的本质是<strong>情绪调节失败</strong>——我们拖延不是因为不想做，而是因为做这件事会触发焦虑、恐惧、自我怀疑等负面情绪，拖延是逃避这些情绪的短期策略。剧本通过A“一坐到书桌前就难受”的台词，精准传达了这一点。</p>
-      <div class="img-wrapper">
-        <img src="1.webp" alt="拖延情绪图示" loading="lazy">
-      </div>
-      <p style="font-size:0.95rem; color:#5d6c7a;">📌 情绪回避是拖延的第一推手，而非意志薄弱。</p>
+    <h1>猜猜数字是多少，范围1-100，你有8次机会</h1>
+    <input type="number" id="guess" min="1" max="100" placeholder="输入1~100数字">
+    <div class="btn-wrap">
+        <button id="submitBtn" onclick="submition()">提交</button>
+        <button id="reset" onclick="resetGame()">重置</button>
     </div>
+    <div id="count">8次机会</div>
 
-    <!-- 2. 完美主义与拖延的共生关系 -->
-    <div class="insight-card">
-      <h3>② 完美主义与拖延的共生</h3>
-      <p>“等状态好了一次性搞定”是拖延者最常见的自我欺骗。研究显示，完美主义者的拖延率显著更高，因为完美主义设定了一个不可能的标准，而“不开始”是唯一不会失败的方式。</p>
-      <div class="img-wrapper">
-        <img src="2.png" alt="完美主义拖延关联图" loading="lazy">
-      </div>
-      <p style="font-size:0.95rem; color:#5d6c7a;">🎯 不开始即零失败 —— 完美主义的防御性回避。</p>
-    </div>
+    <script>
+        // let 可以重新赋值，不能用const
+        let answer = Math.floor(Math.random() * 100) + 1;
+        const inputEle = document.getElementById("guess");
+        const submitBtn = document.getElementById("submitBtn");
+        const countEle = document.getElementById("count");
+        let remainTimes = 8; // 剩余次数
 
-    <!-- 3. 时间折扣效应 -->
-    <div class="insight-card">
-      <h3>③ 时间折扣效应</h3>
-      <p>人类大脑对即时奖励的权重远高于远期奖励。打游戏的多巴胺反馈是即时的，而论文的成就感是延迟的。这不是意志力问题，而是神经机制问题。</p>
-      <div class="img-wrapper">
-        <img src="3.png" alt="时间折扣效应图解" loading="lazy">
-      </div>
-      <p style="font-size:0.95rem; color:#5d6c7a;">⚡ 即时满足与延迟奖赏的神经拔河。</p>
-    </div>
+        // 重置游戏（改名，避开location冲突）
+        function resetGame() {
+            answer = Math.floor(Math.random() * 100) + 1;
+            remainTimes = 8;
+            countEle.innerText = `${remainTimes}次机会`;
+            inputEle.value = "";
+            submitBtn.disabled = false; // 恢复按钮
+        }
 
-    <!-- 4. 飞轮效应的科学性 -->
-    <div class="insight-card">
-      <h3>④ 飞轮效应的科学性</h3>
-      <p>剧本推荐的“只做5分钟”方法，在认知行为疗法中被称为<strong>结构化拖延</strong>或<strong>微启动策略</strong>。原理是：行动门槛一旦降低到“只做5分钟”，焦虑感就会大幅下降；而一旦开始，大脑的任务切换成本已被支付，继续下去的阻力骤减。这与“飞轮效应”的比喻一致：最费力的是推动静止飞轮的第一圈。</p>
-      <div class="img-wrapper">
-        <img src="4.png" alt="飞轮效应示意图" loading="lazy">
-      </div>
-      <p style="font-size:0.95rem; color:#5d6c7a;">🌀 飞轮第一圈 —— 只需欺骗自己“只做五分钟”。</p>
-    </div>
-  </div>
+        function submition() {
+            // 转为数字
+            let num = Number(inputEle.value);
 
-  <!-- 剧本总结 (深度整合) -->
-  <h2>🧠 拖延症实质 · 破解循环</h2>
-  <p>拖延症实质上是一种习惯性地推迟、延迟或推延完成任务的行为模式。即使任务紧急或重要，为了逃避任务带来的负面情绪（如焦虑、无聊或不安等），拖延者便会找各种理由避免立即行动。<br>
-  它会影响身心健康，影响工作与学业表现，还会影响长期目标实现，最后严重到形成恶性循环，变成长期的习惯，难以打破。</p>
-  
-  <div class="quote">
-    💡 有时候，我们拖延并不是因为懒，而是害怕任务带来的焦虑！每次打开Word，看到空白页，就觉得头皮发麻——这不是拖延，是情绪在作祟！<br>
-    换个角度看待任务，让它变得没那么可怕。
-  </div>
+            // 校验：空、非数字、超出范围
+            if (isNaN(num) || num < 1 || num > 100) {
+                alert("输入错误，请输入1~100之间整数！");
+                return;
+            }
 
-  <h3>🎯 试试这些方法 · 立刻破冰</h3>
-  <ul class="method-list">
-    <li><strong>番茄工作法</strong>：专注25分钟，休息5分钟，提高耐力。</li>
-    <li><strong>减少干扰</strong>：上课/工作时把手机丢远点，别让通知诱惑你！</li>
-    <li><strong>给自己设定规则</strong>：比如“先完成任务，再看剧”。</li>
-    <li><strong>改善情绪调节</strong>：别让“负面情绪”拉你下水！</li>
-  </ul>
+            remainTimes--;
 
-  <h3>✨ 举个栗子 · 焦虑换框</h3>
-  <ul style="list-style: none; margin-left: 0;">
-    <li style="margin-bottom: 0.8rem;">❌ 以前：“完蛋，这论文太难了，我根本做不来！”（焦虑值+100）</li>
-    <li style="margin-bottom: 0.8rem;">✅ 现在：“这只是一步一步完成的任务，先搞定第一部分。”（焦虑值-50）</li>
-  </ul>
-  <p><strong>情绪稳定的人，拖延症会少很多！</strong><br>
-  还可以提前想象自己完成任务的感觉，让奖励感变得更具体，更有吸引力，这样拖延的可能性就会降低。</p>
+            if (num === answer) {
+                alert("猜对了！");
+                resetGame(); // 猜对直接开启新一局
+                return;
+            } else if (num > answer) {
+                alert("猜大了");
+            } else {
+                alert("猜小了");
+            }
 
-  <!-- 剧本播放视频区域 -->
-  <h2>🎬 剧本播放</h2>
-  <p style="margin-bottom: 0.5rem;">最后，让我们欣赏一下剧本的播放视频吧！</p>
-  <div class="video-placeholder">
-    <div class="video-icon">🎥▶️</div>
-    <div style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem;">心理剧 · 拖延症实录</div>
-    <a href="https://www.bilibili.com/video/BV1nYddBeEih/?vd_source=17c7ae512ea16c51f0852822a74431b6"><div style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem;">如果视频看不了，请点击这里</div></a>
-    <div style="color: #5a4a3e;"><video width="100%" controls><source src="2.mp4"></video></div>
-    <div style="margin-top: 1.2rem; font-size: 0.9rem; opacity: 0.8;">飞轮效应 · 立刻开始就是破局</div>
-  </div>
+            countEle.innerText = `${remainTimes}次机会`;
 
-  <!-- 额外强调“罕见词”已在语义层体现（不需要额外标出但符合用户之前的要求精神，此处为了低调展现保留一个可选的装饰）-->
-  <div style="margin-top: 2rem; font-size: 0.95rem; background: #f6f1ec; border-radius: 20px; padding: 1.2rem 1.8rem;">
-    <p style="margin-bottom: 0.3rem; display: flex; gap: 12px; align-items: flex-start;">
-      <span style="font-size: 1.5rem;">📎</span> 
-      <span><strong>认知锚点：</strong> 拖延并非懒惰的同义词，而是情绪调节系统的<span class="rare-word" title="形容极其微小而顽固的阻碍">蕞尔</span>裂隙。完美主义构筑<span class="rare-word" title="险峻的高标准">巉</span>岩，飞轮效应揭示<span class="rare-word" title="永恒存在的惯性">恒</span>常的启动代价。唯有<span class="rare-word" title="勤勉不懈">矻矻</span>微动，才能击穿拖延的防御。</span>
-    </p>
-    <p style="margin: 0.8rem 0 0 2.3rem; font-style: italic; color: #4b5e6b;">—— 心理防御机制需要被看见，而非被指责。</p>
-  </div>
-
-  <!-- 脚注/小组信息 -->
-  <div class="footnote">
-    ⏳ 第三组 · 拖延症心理剧 ｜ 剧本分析 ｜ 飞轮效应 · 立刻开始<br>
-    <span style="letter-spacing: 1px;">#procrastination #psychology #wheel</span>
-  </div>
-</div>
-
-<!-- 图片说明：引用的图片1.webp, 2.png, 3.png, 4.png 需置于同级目录下，或替换为有效URL -->
+            // 机会用尽，禁止提交
+            if (remainTimes <= 0) {
+                alert(`机会用完啦！正确数字是${answer}`);
+                submitBtn.disabled = true;
+            }
+        }
+    </script>
 </body>
 </html>
